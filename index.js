@@ -281,6 +281,5 @@ function mainMenu() {
       });
   }
   
-  // Starting point of the application
-  mainMenu();
+  
     
