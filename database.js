@@ -2,7 +2,7 @@ const mysql = require('mysql2');
 
 
 const pool = mysql.createPool({
-  host: '3001',
+  host: 'localhost',
   user: 'root',
   password: '22Raptors!',
   database: 'employee_roster_db',
@@ -43,10 +43,13 @@ function getAllRoles() {
 function getAllEmployees() {
   const query = `
     SELECT employees.id, employees.first_name, employees.last_name, roles.title, 
-    departments.name AS department, roles.salary, employees.manager
-    FROM employees
+    departments.name AS department, roles.salary, manager.first_name as MFirst, Manager.last_name as Mlast
+    FROM employees 
     JOIN roles ON employees.role_id = roles.id
-    JOIN departments ON roles.department_id = departments.id`;
+    JOIN departments ON roles.department_id = departments.id
+    JOIN employees as manager ON manager.id = employees.manager_id
+    `;
+
   return executeQuery(query);
 }
 
@@ -64,7 +67,7 @@ function addRole(title, salary, departmentId) {
 
 // Function to add an employee
 function addEmployee(firstName, lastName, roleId, manager) {
-  const query = 'INSERT INTO employees (first_name, last_name, role_id, manager) VALUES (?, ?, ?, ?)';
+  const query = 'INSERT INTO employees (first_name, last_name, role_id, manager_id) VALUES (?, ?, ?, ?)';
   return executeQuery(query, [firstName, lastName, roleId, manager]);
 }
 

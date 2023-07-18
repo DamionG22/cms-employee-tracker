@@ -5,18 +5,18 @@ CREATE DATABASE employee_roster_db;
 USE employee_roster_db;
 
 -- creates table for database
-CREATE TABLE departments {
+CREATE TABLE departments (
 
    id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
 
-   name VARCHAR(30) NOT NULL,
-}
+   name VARCHAR(30) NOT NULL
+);
 
 
 
-CREATE TABLE  roles {
+CREATE TABLE  roles (
 
-    id INT NOT NULL PRIMARY KEY,
+    id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
 
     title VARCHAR(30) NOT NULL,
 
@@ -29,10 +29,10 @@ CREATE TABLE  roles {
 
 
 
-}
+);
 
 
-CREATE TABLE employees {
+CREATE TABLE employees (
 
     id INT AUTO_INCREMENT PRIMARY KEY ,
 
@@ -46,4 +46,4 @@ CREATE TABLE employees {
 
     FOREIGN KEY (role_id) REFERENCES roles(id)
 
-}
+);
