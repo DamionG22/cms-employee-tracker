@@ -210,7 +210,7 @@ function mainMenu() {
             },
           ])
           .then((answers) => {
-            addEmployee(answers.firstName, answers.lastName, answers.role, answers.manager)
+            addEmployee(answers.firstName, answers.lastName, answers.role, answers.manager )
               .then(() => {
                 console.log('Employee added successfully!');
                 mainMenu();
